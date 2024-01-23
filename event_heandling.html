@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Event Heandling</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div id="contoh-1">
+        <button v-on:click="counter += 5">Tambah 5</button>
+        <p>Tombol diatas telah ditekan {{ counter }} kali.</p>
+    </div>
+    <div id="contoh-2">
+        <!-- `greet` adalah nama metode yang telah didefinisikan di bawah -->
+        <button v-on:click="greet">Greet</button>
+    </div>
+    <div id="contoh-3">
+        <button v-on:click="say('hi')">Say hi</button>
+        <button v-on:click="say('what')">Say what</button>
+    </div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script  type="text/javascript">
+    var contoh1 = new Vue({
+        el: '#contoh-1',
+        data: {
+             counter: 0
+        }
+    })
+    var contoh2 = new Vue({
+    el: '#contoh-2',
+    data: {
+        name: 'Vue.js'
+    },
+    // mendefinisikan metode dibawah `methods` object
+    methods: {
+        greet: function (event) {
+        // `this` di dalam metode merujuk ke Vue instance
+        alert('Hello ' + this.name + '!')
+        // `event` adalah bawaan DOM event
+        if (event) {
+            alert(event.target.tagName)
+        }
+        }
+    }
+    })
+    new Vue({
+    el: '#contoh-3',
+    methods: {
+        say: function (message) {
+        alert(message)
+        }
+    }
+    })
+</script>
+    
